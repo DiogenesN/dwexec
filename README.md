@@ -26,8 +26,7 @@ I could have simply switched to another polkit agent such as `lxpolkit` (which w
 
 # Screenshot
 
-![dwexec screenshot]([https://github.com/DiogenesVX/dwexec/blob/main/dwexec.png](https://raw.githubusercontent.com/DiogenesN/dwexec/refs/heads/main/dwexec.png))
-
+![Alt text](https://github.com/DiogenesN/dwexec/blob/main/dwexec.png)
 ---
 
 # Installation
