@@ -111,7 +111,3 @@ Now launching GParted from the application menu will automatically use `dwexec`.
 
 ---
 
-# License
-
-MIT License
-
