@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set -euo pipefail
+
+max_attempts=3
+attempt=0
+
+export SUDO_ASKPASS=/usr/local/bin/yadaskpass
+
+while (( attempt < max_attempts )); do
+	if sudo -A --preserve-env=WAYLAND_DISPLAY,XDG_RUNTIME_DIR \
+		pkexec env \
+			WAYLAND_DISPLAY="$WAYLAND_DISPLAY" \
+			XDG_RUNTIME_DIR="$XDG_RUNTIME_DIR" \
+			"$@"
+	then
+		exit 0
+	fi
+
+	((attempt++))
+
+	if (( attempt < max_attempts )); then
+		yad \
+			--center \
+			--width=420 \
+			--title="Authentication Failed" \
+			--image=dialog-warning \
+			--button=gtk-ok:0 \
+			--text="Wrong password.\nAttempts left: $((max_attempts - attempt))"
+	fi
+done
+
+yad \
+	--center \
+	--width=420 \
+	--title="Authentication Failed" \
+	--image=dialog-error \
+	--button=gtk-ok:0 \
+	--text="Authentication failed.\nMaximum attempts exceeded."
+
+exit 1

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+yad \
+	--center \
+	--width=420 \
+	--title="Authentication Required" \
+	--image=dialog-password \
+	--hide-text \
+	--entry \
+	--button=gtk-ok:0 \
+	--button=gtk-cancel:1
